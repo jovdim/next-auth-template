@@ -69,6 +69,16 @@ const commonPasswords = [
 ];
 
 export const LoginSchema = z.object({
+  name: z
+    .string({
+      required_error: "Name is required", // Custom error message
+      invalid_type_error: "Name must be a string",
+    })
+    .min(4, { message: "Name must be at least 4 characters long" })
+    .max(40, { message: "Name must be at most 40 characters long" })
+    .regex(/^[a-zA-Z\s]+$/, {
+      message: "Name can only contain letters and spaces",
+    }),
   email: z
     .string()
     .trim()
@@ -123,9 +133,8 @@ export const LoginSchema = z.object({
 
 // Create a new schema omitting emailVerification
 export const LoginSchemaWithoutVerification = LoginSchema.omit({
+  name: true,
   emailVerification: true,
-
-  
 });
 // Infer the type without the emailVerification field
 export type LoginSchemaForm = z.infer<typeof LoginSchemaWithoutVerification>;

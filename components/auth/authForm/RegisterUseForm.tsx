@@ -39,6 +39,7 @@ export default function RegisterUseForm() {
   const form = useForm<RegisterSchemaForm>({
     resolver: zodResolver(LoginSchema),
     defaultValues: {
+      name: "",
       email: "",
       password: "",
       emailVerification: "",
@@ -52,7 +53,7 @@ export default function RegisterUseForm() {
   return (
     <Form {...form}>
       <form
-        onSubmit={form.handleSubmit((data: LoginSchemaForm) => {
+        onSubmit={form.handleSubmit((data: RegisterSchemaForm) => {
           setSuccess("");
           setError("");
 
@@ -66,6 +67,22 @@ export default function RegisterUseForm() {
         className="space-y-6"
       >
         <div className="space-y-4">
+
+          {/* Name Field */}
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Name</FormLabel>
+                <FormControl>
+                  <Input {...field} placeholder="johndoe" type="text" maxLength={40}/>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
           {/* Email Field */}
           <FormField
             control={form.control}

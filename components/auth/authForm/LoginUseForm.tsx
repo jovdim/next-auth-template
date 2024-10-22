@@ -46,8 +46,10 @@ export default function LoginUseForm() {
 
           startTransition(() => {
             loginUser(data).then((response) => {
-              setSuccess(response.success);
-              setError(response.error);
+              if (response) {
+                // setSuccess(response.success);
+                setError(response.error);
+              }
             });
           });
         })}
