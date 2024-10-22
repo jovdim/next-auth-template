@@ -10,7 +10,7 @@ import FormError from "./FormError";
 import { Button } from "@/components/ui/button";
 import Spinner from "../Spinner";
 import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp";
-import { handleLogInUser } from "@/action/loginAction/login-action";
+import { registerUser } from "@/action/loginAction/register";
 import {
   Form,
   FormControl,
@@ -25,11 +25,10 @@ import {
   InputOTPGroup,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
-
 import {
   LoginSchema,
   LoginSchemaForm,
-  SingupSchemaForm,
+  RegisterSchemaForm,
 } from "@/lib/loginFormSchema/login-signin-types";
 
 export default function RegisterUseForm() {
@@ -37,7 +36,7 @@ export default function RegisterUseForm() {
   const [error, setError] = useState<string | undefined>();
   const [success, setSuccess] = useState<string | undefined>();
 
-  const form = useForm<SingupSchemaForm>({
+  const form = useForm<RegisterSchemaForm>({
     resolver: zodResolver(LoginSchema),
     defaultValues: {
       email: "",
@@ -58,7 +57,7 @@ export default function RegisterUseForm() {
           setError("");
 
           startTransition(() => {
-            handleLogInUser(data).then((response) => {
+            registerUser(data).then((response) => {
               setSuccess(response.success);
               setError(response.error);
             });

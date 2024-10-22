@@ -8,7 +8,7 @@ import FormSuccess from "./FormSuccess";
 import FormError from "./FormError";
 import { Button } from "@/components/ui/button";
 import Spinner from "../Spinner";
-import { handleLogInUser } from "@/action/loginAction/login-action";
+import { loginUser } from "@/action/loginAction/login";
 import {
   Form,
   FormControl,
@@ -45,7 +45,7 @@ export default function LoginUseForm() {
           setError("");
 
           startTransition(() => {
-            handleLogInUser(data).then((response) => {
+            loginUser(data).then((response) => {
               setSuccess(response.success);
               setError(response.error);
             });

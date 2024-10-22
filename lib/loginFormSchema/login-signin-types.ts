@@ -121,13 +121,13 @@ export const LoginSchema = z.object({
     .optional(),
 });
 
-
 // Create a new schema omitting emailVerification
 export const LoginSchemaWithoutVerification = LoginSchema.omit({
   emailVerification: true,
+
+  
 });
 // Infer the type without the emailVerification field
 export type LoginSchemaForm = z.infer<typeof LoginSchemaWithoutVerification>;
 
-export type SingupSchemaForm = z.infer<typeof LoginSchema>;
-
+export type RegisterSchemaForm = z.infer<typeof LoginSchema>;

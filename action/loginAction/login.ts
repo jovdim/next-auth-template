@@ -1,13 +1,13 @@
 "use server";
 
 import {
-  LoginSchema,
   LoginSchemaForm,
+  LoginSchemaWithoutVerification,
 } from "@/lib/loginFormSchema/login-signin-types";
 
-export async function handleLogInUser(data: LoginSchemaForm) {
+export async function loginUser(data: LoginSchemaForm) {
   // Validate input data against the LoginSchema
-  const result = LoginSchema.safeParse(data);
+  const result = LoginSchemaWithoutVerification.safeParse(data);
 
   // Check for validation errors
   if (!result.success) {
@@ -28,7 +28,6 @@ export async function handleLogInUser(data: LoginSchemaForm) {
   // Proceed with your login logic here, e.g., checking against a database
   console.log("Email:", result.data.email); // Safely log the validated email
   console.log("Password:", result.data.password);
-  console.log("code: ", result.data.emailVerification); // Safely log the validated
 
   // Here you can add logic to authenticate the user, e.g., database check
   // ...
