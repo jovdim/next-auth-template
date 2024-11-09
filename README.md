@@ -64,7 +64,18 @@ Make sure you have the following tools installed:
 3. **Environment Configuration**:
    - Rename `.env.example` to `.env` and fill in the required fields with your configuration values (see [Environment Variables / Configuration](#environment-variables--configuration) below for more details).
 
-4. **Run the Development Server**:
+4. **Generate `AUTH_SECRET`**:
+
+    The `AUTH_SECRET` is required to encrypt tokens and email verification hashes. To generate a random secret, run the following command:
+
+    ```bash
+    npx auth secret
+    ```
+
+    This will automatically add the generated secret to your `.env.local` file.
+
+
+5. **Run the Development Server**:
     ```bash
     npm run dev
     ```
