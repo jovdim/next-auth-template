@@ -6,15 +6,15 @@ A ready-to-use authentication template for Next.js applications, providing pre-b
 
 ## Table of Contents 📚
 
-1. [[## Project Overview 🌟 |Project Overview]]
-2. [[ ## Technologies Used 🛠️|Technologies Used]]
-3. [[## Installation & Setup ⚙️|Installation & Setup]]
-4. [[## Usage 🏁|Usage]]
-5. [[## Features ✨|Features]]
-6. [[## Environment Variables / Configuration 🌍|Environment Variables / Configuration]]
-7. [[## Testing 🧪|Testing]]
-8. [[## Contributing 💡| Contributing]]
-9. [[## Contact Information 📧|Contact Information]]
+1. [Project Overview](##project-overview)
+2. [Technologies Used](#technologies-used)
+3. [Installation & Setup](#installation-setup)
+4. [Usage](#usage)
+5. [Features](#features)
+6. [Environment Variables / Configuration](#environment-variables-configuration)
+7. [Testing](#testing)
+8. [Contributing](#contributing)
+9. [Contact Information](#contact-information)
 
 ---
 
