@@ -13,12 +13,18 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum UserRole {
+  ADMIN
+  USER
+}
+
 model User {
   id            String    @id @default(cuid())
   name          String?
   email         String    @unique
   emailVerified DateTime?
   password      String?
+  role          UserRole  @default(USER)
   image         String?
   accounts      Account[]
   createdAt     DateTime  @default(now())
@@ -27,7 +33,7 @@ model User {
 
 model Account {
   id                       String  @id @default(cuid())
-  userId                   String  @unique
+  userId                   String
   type                     String
   provider                 String
   providerAccountId        String
@@ -37,7 +43,6 @@ model Account {
   token_type               String?
   scope                    String?
   id_token                 String? @db.Text
-  session_state            String?
   refresh_token_expires_in Int?
   user                     User?   @relation(fields: [userId], references: [id])
 
@@ -46,4 +51,22 @@ model Account {
 
   @@unique([provider, providerAccountId])
   @@index([userId, provider])
+}
+
+model VerificationToken {
+  id        String   @id @default(cuid())
+  email     String
+  token     String   @unique
+  expiresAt DateTime
+
+  @@unique([email, token])
+}
+
+model PasswordResetToken {
+  id        String   @id @default(cuid())
+  email     String
+  token     String   @unique
+  expiresAt DateTime
+
+  @@unique([email, token])
 }

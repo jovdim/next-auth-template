@@ -1,10 +1,10 @@
-import LoginForm from "@/authentication/components/auth/LoginForm";
+import NewPasswordForm from "@/authentication/components/auth/NewPasswordForm";
 import { Suspense } from "react";
 
 export default function page() {
   return (
     <Suspense>
-      <LoginForm />
+      <NewPasswordForm />
     </Suspense>
   );
 }

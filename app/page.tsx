@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { PoppinsFont } from "./fonts/font";
+import LoginButton from "@/authentication/components/auth/LoginButton";
 import { cn } from "@/lib/utils";
-import LoginButton from "@/components/auth/login-button";
 
 export default function Home() {
   return (
@@ -15,7 +15,7 @@ export default function Home() {
         >
           🔐Auth
         </h1>
-        <p className="text-lg text-white">A simple authentication service</p>
+        <p className="text-lg text-white">A simple authentication template</p>
         <div>
           <LoginButton>
             <Button variant="secondary" size="lg">
