@@ -21,7 +21,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { CheckCircle, X, XCircle } from "phosphor-react";
+import { CheckCircle, Eye, EyeSlash, X, XCircle } from "phosphor-react";
 import { useSearchParams } from "next/navigation";
 
 export default function NewPasswordUseForm() {
@@ -31,6 +31,7 @@ export default function NewPasswordUseForm() {
   const [isPending, startTransition] = useTransition();
   const [error, setError] = useState<string | undefined>();
   const [success, setSuccess] = useState<string | undefined>();
+  const [showPassword, setShowPassword] = useState(false);
 
   const form = useForm<NewPasswordSchemaForm>({
     defaultValues: { password: "", confirmPassword: "" },
@@ -75,8 +76,15 @@ export default function NewPasswordUseForm() {
                   <Input
                     {...field}
                     placeholder="Your Password"
-                    type="password"
-                  />
+                    type={showPassword ? "text" : "password"}
+                  />{" "}
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword((prev) => !prev)}
+                    className="absolute inset-y-0 right-0 flex items-center pr-3"
+                  >
+                    {showPassword ? <EyeSlash size={15} /> : <Eye size={16} />}
+                  </button>
                 </FormControl>
                 <FormMessage />
                 <ul className="flex flex-wrap items-center gap-x-1 space-y-1 text-[12px]">
@@ -110,8 +118,19 @@ export default function NewPasswordUseForm() {
                   <Input
                     {...field}
                     placeholder="Confirm your Password"
-                    type="password"
+                    type={showPassword ? "text" : "password"}
                   />
+                        <button
+                      type="button"
+                      onClick={() => setShowPassword((prev) => !prev)}
+                      className="absolute inset-y-0 right-0 flex items-center pr-3"
+                    >
+                      {showPassword ? (
+                        <EyeSlash size={15} />
+                      ) : (
+                        <Eye size={16} />
+                      )}
+                    </button>
                 </FormControl>
                 <FormMessage />
               </FormItem>
