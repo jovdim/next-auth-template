@@ -6,15 +6,15 @@ A ready-to-use authentication template for Next.js applications, providing pre-b
 
 ## Table of Contents 📚
 
-1. [[## Project Overview 🌟 |Project Overview]]
-2. [[ ## Technologies Used 🛠️|Technologies Used]]
-3. [[## Installation & Setup ⚙️|Installation & Setup]]
-4. [[## Usage 🏁|Usage]]
-5. [[## Features ✨|Features]]
-6. [[## Environment Variables / Configuration 🌍|Environment Variables / Configuration]]
-7. [[## Testing 🧪|Testing]]
-8. [[## Contributing 💡| Contributing]]
-9. [[## Contact Information 📧|Contact Information]]
+1. [Project Overview](##project-overview)
+2. [Technologies Used](#technologies-used)
+3. [Installation & Setup](#installation-setup)
+4. [Usage](#usage)
+5. [Features](#features)
+6. [Environment Variables / Configuration](#environment-variables-configuration)
+7. [Testing](#testing)
+8. [Contributing](#contributing)
+9. [Contact Information](#contact-information)
 
 ---
 
@@ -64,7 +64,18 @@ Make sure you have the following tools installed:
 3. **Environment Configuration**:
    - Rename `.env.example` to `.env` and fill in the required fields with your configuration values (see [Environment Variables / Configuration](#environment-variables--configuration) below for more details).
 
-4. **Run the Development Server**:
+4. **Generate `AUTH_SECRET`**:
+
+    The `AUTH_SECRET` is required to encrypt tokens and email verification hashes. To generate a random secret, run the following command:
+
+    ```bash
+    npx auth secret
+    ```
+
+    This will automatically add the generated secret to your `.env.local` file.
+
+
+5. **Run the Development Server**:
     ```bash
     npm run dev
     ```
