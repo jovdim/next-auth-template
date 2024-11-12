@@ -73,18 +73,24 @@ export default function NewPasswordUseForm() {
               <FormItem>
                 <FormLabel>Password</FormLabel>
                 <FormControl>
-                  <Input
-                    {...field}
-                    placeholder="Your Password"
-                    type={showPassword ? "text" : "password"}
-                  />{" "}
-                  <button
-                    type="button"
-                    onClick={() => setShowPassword((prev) => !prev)}
-                    className="absolute inset-y-0 right-0 flex items-center pr-3"
-                  >
-                    {showPassword ? <EyeSlash size={15} /> : <Eye size={16} />}
-                  </button>
+                  <>
+                    <Input
+                      {...field}
+                      placeholder="Your Password"
+                      type={showPassword ? "text" : "password"}
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword((prev) => !prev)}
+                      className="absolute inset-y-0 right-0 flex items-center pr-3"
+                    >
+                      {showPassword ? (
+                        <EyeSlash size={15} />
+                      ) : (
+                        <Eye size={16} />
+                      )}
+                    </button>
+                  </>
                 </FormControl>
                 <FormMessage />
                 <ul className="flex flex-wrap items-center gap-x-1 space-y-1 text-[12px]">
@@ -115,12 +121,13 @@ export default function NewPasswordUseForm() {
               <FormItem>
                 <FormLabel>Confirm Password</FormLabel>
                 <FormControl>
-                  <Input
-                    {...field}
-                    placeholder="Confirm your Password"
-                    type={showPassword ? "text" : "password"}
-                  />
-                        <button
+                  <>
+                    <Input
+                      {...field}
+                      placeholder="Confirm your Password"
+                      type={showPassword ? "text" : "password"}
+                    />
+                    <button
                       type="button"
                       onClick={() => setShowPassword((prev) => !prev)}
                       className="absolute inset-y-0 right-0 flex items-center pr-3"
@@ -131,6 +138,7 @@ export default function NewPasswordUseForm() {
                         <Eye size={16} />
                       )}
                     </button>
+                  </>
                 </FormControl>
                 <FormMessage />
               </FormItem>
