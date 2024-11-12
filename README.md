@@ -62,7 +62,7 @@ Make sure you have the following tools installed:
     ```
 
 3. **Environment Configuration**:
-   - Rename `.env.example` to `.env` and fill in the required fields with your configuration values (see [Environment Variables / Configuration](#environment-variables--configuration) below for more details).
+   - Rename `.env.example` to `.env` and fill in the required fields with your configuration values (see [Environment Variables / Configuration](https://github.com/jovdim/next-auth-template?tab=readme-ov-file#environment-variables--configuration-)) below for more details).
 
 4. **Generate `AUTH_SECRET`**:
 
