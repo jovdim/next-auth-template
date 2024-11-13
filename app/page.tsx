@@ -1,11 +1,11 @@
-import { Button } from "@/components/ui/button";
 import { PoppinsFont } from "./fonts/font";
-import LoginButton from "@/authentication/components/auth/LoginButton";
 import { cn } from "@/lib/utils";
+import NavigationBar from "@/components/NavigationBar";
 
 export default function Home() {
   return (
-    <main className="flex h-full flex-col items-center justify-center bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-sky-400 to-blue-800">
+    <main className="relative flex h-screen items-center justify-center bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-sky-400 to-blue-800">
+      <NavigationBar />
       <div className="space-y-6 text-center">
         <h1
           className={cn(
@@ -13,16 +13,11 @@ export default function Home() {
             PoppinsFont.className,
           )}
         >
-          🔐Auth
+          Auth.js🛡️
         </h1>
-        <p className="text-lg text-white">A simple authentication template</p>
-        <div>
-          <LoginButton>
-            <Button variant="secondary" size="lg">
-              Log in
-            </Button>
-          </LoginButton>
-        </div>
+        <p className="text-lg text-white">
+          A complete template for Auth.js(next-auth.js)
+        </p>
       </div>
     </main>
   );

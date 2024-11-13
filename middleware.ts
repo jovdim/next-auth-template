@@ -7,24 +7,31 @@ import {
   DEFAULT_LOGIN_REDIRECT,
   AUTHENTICATION_ROUTES,
   API_PREFIX_AUTHENTICATIONI,
+  ADMIN_ROUTES,
 } from "./route";
 
 // Use Sets for faster lookups
 const publicRoutes = new Set(PUBLIC_ROUTES);
 const authRoutes = new Set(AUTHENTICATION_ROUTES);
+const adminRoutes = new Set(ADMIN_ROUTES);
 
 const { auth } = NextAuth(authConfig);
 
 export default auth(async function middleware(req) {
   const { nextUrl } = req;
   const isLoggedin = Boolean(req.auth?.user);
-
+  const role = req.auth?.user.userRole;
   const isApiAuthRoute = nextUrl.pathname.startsWith(
     API_PREFIX_AUTHENTICATIONI,
   );
   const isPublicRoute = publicRoutes.has(nextUrl.pathname);
   const isAuthRoute = authRoutes.has(nextUrl.pathname);
+  const isAdminRoute = adminRoutes.has(nextUrl.pathname);
 
+  //admin route
+  if (isAdminRoute && role === "USER") {
+    return NextResponse.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
+  }
   // Handle API authentication routes first (no special handling needed)
   if (isApiAuthRoute) return NextResponse.next();
 

@@ -1,20 +1,26 @@
-"use client";
-
-import { LogInButtonProps } from "@/authentication/lib/types";
+import Link from "next/link";
 import React from "react";
-import { useRouter } from "next/navigation";
 
-export default function LoginButton({
-  children,
-}: LogInButtonProps) {
-  const router = useRouter();
-  const onClick = () => {
-    router.push("/auth/login");
-  };
-
+export function LoginButton({ children }: { children: React.ReactNode }) {
   return (
-    <span onClick={onClick} className="cursor-pointer">
-      {children}
-    </span>
+    <Link href="/auth/login">
+      <span className="cursor-pointer">{children}</span>
+    </Link>
+  );
+}
+
+export function RegisterButton({ children }: { children: React.ReactNode }) {
+  return (
+    <Link href="/auth/register">
+      <span className="cursor-pointer">{children}</span>
+    </Link>
+  );
+}
+
+export function GithubSource({ children }: { children: React.ReactNode }) {
+  return (
+    <Link href="https://github.com/jovdim/next-auth-template">
+      <span className="cursor-pointer">{children}</span>
+    </Link>
   );
 }

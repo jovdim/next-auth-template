@@ -8,7 +8,6 @@ import db from "./authentication/lib/db";
 declare module "next-auth" {
   interface User {
     role: UserRole;
-    emailVerified: Date | null;
   }
   interface Session {
     user: {
@@ -29,7 +28,6 @@ export default {
         return user as User;
       },
     }),
-    
   ],
   callbacks: {
     async signIn({ user, account, profile }) {
@@ -39,10 +37,6 @@ export default {
       if (!account || !profile?.email) {
         console.warn("Sign-in attempt missing account or email data");
         return false;
-      }
-
-      if (!profile.email_verified) {
-        return "/auth/login?error=Access+Denied";
       }
       try {
         // Check if user exists with provided email
@@ -66,9 +60,9 @@ export default {
               data: {
                 email: profile.email,
                 name: user.name || profile.name,
-                image: user.image || profile.picture,
+                image: user.image || profile.picture || profile.avatar_link,
                 role: "USER",
-                emailVerified: profile.email_verified ? new Date() : null,
+                emailVerified: new Date(),
               },
             });
           }

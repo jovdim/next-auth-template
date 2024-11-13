@@ -35,17 +35,10 @@ export async function loginUser(data: LoginSchemaForm) {
     return { error: "Invalid email or password!" };
   }
 
-  if (!existingUser.emailVerified) {
-    const verificationToken = await generateVerificationToken(
-      existingUser.email,
-    );
-
-    await sendVerificationEmail(
-      verificationToken.email,
-      verificationToken.token,
-    );
+  if (!existingUser.credentialEmailVerified && existingUser.password) {
     return {
-      success: "Email not verified. A confirmation email has been sent!",
+      success:
+        "A confirmation email has already been sent. Please check your inbox or spam folder.",
     };
   }
 

@@ -18,6 +18,7 @@ export const AUTHENTICATION_ROUTES = [
   "/auth/error",
   "/auth/reset",
   "/auth/reset/new-password",
+  "/auth/register/verify-email",
 ];
 
 /**
@@ -33,3 +34,4 @@ export const API_PREFIX_AUTHENTICATIONI = "/api/auth";
  */
 
 export const DEFAULT_LOGIN_REDIRECT = "/settings";
+export const ADMIN_ROUTES = ["/admin"];
