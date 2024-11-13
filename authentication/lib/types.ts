@@ -1,9 +1,3 @@
-//login-button.tsx
-export interface LogInButtonProps {
-  children: React.ReactNode;
-  mode?: "modal" | "redirect";
-  asChild?: boolean;
-}
 
 //CardWrapper.tsx
 export interface CardWrapperProps {
@@ -23,4 +17,10 @@ export interface HeaderProps {
 export interface BackButtonProps {
   href: string;
   label: string;
+}
+
+export interface userData {
+  name: string;
+  email: string;
+  image?: string;
 }

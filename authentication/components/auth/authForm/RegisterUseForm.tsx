@@ -16,11 +16,12 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CheckCircle, Eye, EyeSlash, Spinner, XCircle } from "phosphor-react";
+import { CheckCircle, Eye, EyeSlash, XCircle } from "phosphor-react";
 import { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import FormError from "./FormError";
 import FormSuccess from "./FormSuccess";
+import Spinner from "../Spinner";
 
 export default function RegisterUseForm() {
   const [isPending, startTransition] = useTransition();
@@ -58,6 +59,7 @@ export default function RegisterUseForm() {
 
           startTransition(() => {
             registerUser(data).then((response) => {
+              if (!response) return;
               setSuccess(response.success);
               setError(response.error);
             });

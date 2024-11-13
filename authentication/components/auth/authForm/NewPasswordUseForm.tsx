@@ -73,7 +73,7 @@ export default function NewPasswordUseForm() {
               <FormItem>
                 <FormLabel>Password</FormLabel>
                 <FormControl>
-                  <>
+                  <div className="relative">
                     <Input
                       {...field}
                       placeholder="Your Password"
@@ -90,7 +90,7 @@ export default function NewPasswordUseForm() {
                         <Eye size={16} />
                       )}
                     </button>
-                  </>
+                  </div>
                 </FormControl>
                 <FormMessage />
                 <ul className="flex flex-wrap items-center gap-x-1 space-y-1 text-[12px]">
@@ -121,10 +121,10 @@ export default function NewPasswordUseForm() {
               <FormItem>
                 <FormLabel>Confirm Password</FormLabel>
                 <FormControl>
-                  <>
+                  <div className="relative">
                     <Input
                       {...field}
-                      placeholder="Confirm your Password"
+                      placeholder="Your Password"
                       type={showPassword ? "text" : "password"}
                     />
                     <button
@@ -138,7 +138,7 @@ export default function NewPasswordUseForm() {
                         <Eye size={16} />
                       )}
                     </button>
-                  </>
+                  </div>
                 </FormControl>
                 <FormMessage />
               </FormItem>

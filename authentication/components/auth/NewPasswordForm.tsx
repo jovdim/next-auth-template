@@ -5,7 +5,7 @@ import CardWrapper from "./CardWrapper";
 export default function NewPasswordForm() {
   return (
     <CardWrapper
-      headerLabel="new your password"
+      headerLabel="Enter your new password"
       backButtonLabel="Back to login"
       backButtonHref="/auth/login"
     >

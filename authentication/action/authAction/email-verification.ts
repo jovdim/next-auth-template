@@ -17,9 +17,9 @@ export const emailVerification = async (token: string) => {
   await db.user.update({
     where: {
       id: existingUser.id,
-    },
+  },
     data: {
-      emailVerified: new Date(),
+      credentialEmailVerified: new Date(),
       email: existingToken.email,
     },
   });

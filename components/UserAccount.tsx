@@ -2,10 +2,6 @@ import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
@@ -21,22 +17,17 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import Logout from "@/authentication/action/authAction/logout";
-
-type userData = {
-  name: string;
-  email: string;
-  image: string;
-};
+import { userData } from "@/authentication/lib/types";
 
 export function UserAccount({ data }: { data: userData }) {
-  const image = "https://github.com/shadcn.png";
+  const image = "https://github.com/shadcn.png"; //default images
   return (
     <Dialog>
       <DialogTrigger>
         <Avatar>
           <AvatarImage
-            className="size-16 rounded-full"
-            src={image}
+            className="size-16 rounded-full border-4"
+            src={data.image}
             alt="profile icon"
           />
           <AvatarFallback>Profile Icon</AvatarFallback>
@@ -56,7 +47,7 @@ export function UserAccount({ data }: { data: userData }) {
                   <Avatar>
                     <AvatarImage
                       className="size-24 rounded-full"
-                      src={data.image}
+                      src={data.image || image}
                       alt="profile icon"
                     />
                     <AvatarFallback>Profile Icon</AvatarFallback>
@@ -73,13 +64,13 @@ export function UserAccount({ data }: { data: userData }) {
                     <span>
                       <strong>Name:</strong>
                     </span>
-                    <p>{data.name}</p>
+                    <p>John Doe</p>
                   </div>
                   <div className="rounded-md border-b-2 border-b-black/30 pb-2 pl-4">
                     <span>
                       <strong>email:</strong>
                     </span>
-                    <p>{data.email}</p>
+                    <p>{"johndoe77@gmail.com"}</p>
                   </div>
                 </div>
               </CardContent>
@@ -102,7 +93,7 @@ export function UserAccount({ data }: { data: userData }) {
               <CardHeader>
                 <CardTitle>Email</CardTitle>
                 <CardDescription>
-                  Make changes to your account here. Click save when you're
+                  Make changes to your account here. Click save when you&apos;re
                   done.
                 </CardDescription>
               </CardHeader>
@@ -125,7 +116,7 @@ export function UserAccount({ data }: { data: userData }) {
               <CardHeader>
                 <CardTitle>Password</CardTitle>
                 <CardDescription>
-                  Change your password here. After saving, you'll be logged out.
+                  Change your password here. After saving, you&apos;ll be logged out.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-2">
