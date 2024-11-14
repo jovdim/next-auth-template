@@ -7,8 +7,6 @@ import { LoginSchemaForm } from "@/authentication/lib/validationFormSchema/valid
 import { DEFAULT_LOGIN_REDIRECT } from "@/route";
 import { AuthError } from "next-auth";
 import { getUserByEmail } from "@/authentication/lib/data/user";
-import { generateVerificationToken } from "@/authentication/lib/generate-token";
-import { sendVerificationEmail } from "@/authentication/lib/mail";
 
 export async function loginUser(data: LoginSchemaForm) {
   // Validate input data using Zod schema
