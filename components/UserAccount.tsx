@@ -1,9 +1,5 @@
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
@@ -64,13 +60,13 @@ export function UserAccount({ data }: { data: userData }) {
                     <span>
                       <strong>Name:</strong>
                     </span>
-                    <p>John Doe</p>
+                    <p>{data.name}</p>
                   </div>
                   <div className="rounded-md border-b-2 border-b-black/30 pb-2 pl-4">
                     <span>
                       <strong>email:</strong>
                     </span>
-                    <p>{"johndoe77@gmail.com"}</p>
+                    <p>{data.email}</p>
                   </div>
                 </div>
               </CardContent>
@@ -116,7 +112,8 @@ export function UserAccount({ data }: { data: userData }) {
               <CardHeader>
                 <CardTitle>Password</CardTitle>
                 <CardDescription>
-                  Change your password here. After saving, you&apos;ll be logged out.
+                  Change your password here. After saving, you&apos;ll be logged
+                  out.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-2">
