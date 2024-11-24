@@ -68,7 +68,7 @@ export async function registerUser(data: RegisterSchemaForm) {
     };
   }
   await sendVerificationEmail(verificationToken.email, verificationToken.token);
-  redirect("/auth/register/verify-email");
+  redirect(`/auth/register/verify-email?email=${encodeURIComponent(email)}`);
   return {
     success: "A confirmation email has been sent. Please verify your email.",
   };
