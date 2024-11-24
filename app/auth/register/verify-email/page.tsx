@@ -83,7 +83,7 @@ export default function EmailSentPage() {
         </p>
         <p className="mb-6 text-center text-sm text-gray-500">
           Please check your inbox and follow the instructions to complete the
-          verification process. If you don't see the email, check your spam
+          verification process. If you don&apos;t see the email, check your spam
           folder.
         </p>
 
