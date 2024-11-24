@@ -154,6 +154,31 @@ export const RegisterSchema = LoginSchema.extend({
 });
 
 // Password reset schema, omitting name and password fields
+ const updatePassword = LoginSchema.omit({
+  name: true,
+  email: true,
+});
+
+export const updatePasswordSchema = updatePassword
+  .extend({
+    currentPassword: z.string({
+      required_error: "Input your current password",
+    }),
+    confirmPassword: z.string({ required_error: "Confirm your password" }),
+  })
+  .superRefine((data, ctx) => {
+    passwordValidation(data.password, ctx);
+
+    if (data.password !== data.confirmPassword) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Passwords do not match",
+        path: ["confirmPassword"],
+      });
+    }
+  });
+
+// Password reset schema, omitting name and password fields
 export const ResetEmailSchema = LoginSchema.omit({
   name: true,
   password: true,
@@ -188,6 +213,12 @@ export const NewPasswordSchema = z
 
 // Type for new password form schema
 export type NewPasswordSchemaForm = z.infer<typeof NewPasswordSchema>;
+
+// Type for update password form schema
+export type UpdatePasswordSchemaForm = Omit<
+  z.infer<typeof updatePasswordSchema>,
+  "name" | "email"
+>;
 
 // Type for password reset schema
 export type ResetSchemaForm = z.infer<typeof ResetEmailSchema>;
