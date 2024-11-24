@@ -69,7 +69,7 @@ export default function EmailResend() {
   };
 
   return (
-    <div className="flex items-center justify-center rounded-lg bg-blue-50">
+    <div className="flex mx-4 items-center justify-center rounded-lg bg-blue-50">
       <div className="w-full max-w-lg rounded-xl bg-white p-8 shadow-xl">
         <h1 className="mb-4 text-center text-3xl font-semibold text-blue-600">
           Verify Your Email
@@ -82,7 +82,7 @@ export default function EmailResend() {
         </p>
         <p className="mb-6 text-center text-sm text-gray-500">
           Please check your inbox and follow the instructions to complete the
-          verification process. If you don't see the email, check your spam
+          verification process. If you don&apos;t see the email, check your spam
           folder.
         </p>
 
@@ -97,9 +97,8 @@ export default function EmailResend() {
             </div>
           ) : (
             <p className="mb-4 text-sm text-gray-500">
-            If you did not receive the email, you may request a resend.
-          </p>
-          
+             If you did not receive the email, you may request a resend.
+            </p>
           )}
 
           <Button
