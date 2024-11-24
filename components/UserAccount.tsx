@@ -13,7 +13,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import Logout from "@/authentication/action/authAction/logout";
 import { userData } from "@/authentication/lib/types";
 import UpdatePasswordUseForm from "@/authentication/components/auth/authForm/UpdatePasswordUseForm";
-
+import Image from "next/image";
+import { Label } from "./ui/label";
 
 export function UserAccount({ data }: { data: userData }) {
   const image = "/profile-placeholder.svg"; //default images
@@ -27,7 +28,13 @@ export function UserAccount({ data }: { data: userData }) {
             alt="profile icon"
           />
           <AvatarFallback>
-            <img src={image} alt="sss" className="size-12" />
+            <Image
+              width={12}
+              height={12}
+              src={image}
+              alt="profile icon"
+              className="size-12"
+            />
           </AvatarFallback>
         </Avatar>
       </DialogTrigger>
@@ -41,7 +48,7 @@ export function UserAccount({ data }: { data: userData }) {
             <Card>
               <CardHeader className="flex items-center justify-center"></CardHeader>
               <CardContent className="space-y-6">
-                <div className="flex items-center justify-center">
+                <div className="flex flex-col items-center justify-center">
                   <Avatar>
                     <AvatarImage
                       className="size-24 rounded-full"
@@ -49,9 +56,18 @@ export function UserAccount({ data }: { data: userData }) {
                       alt="profile icon"
                     />
                     <AvatarFallback>
-                      <img src="image" alt="sss" className="size-12" />
+                      <Image
+                        width={12}
+                        height={12}
+                        src={image}
+                        alt="profile icon"
+                        className="size-12"
+                      />
                     </AvatarFallback>
                   </Avatar>
+                  <Label className="py-2 text-center text-sm font-bold">
+                    Profile
+                  </Label>
                 </div>
                 <div className="space-y-6 text-lg">
                   <div className="rounded-md border-b-2 border-b-black/30 pb-2 pl-4">
@@ -94,7 +110,6 @@ export function UserAccount({ data }: { data: userData }) {
               <CardContent className="space-y-2">
                 <UpdatePasswordUseForm />
               </CardContent>
-             
             </Card>
           </TabsContent>
         </Tabs>
