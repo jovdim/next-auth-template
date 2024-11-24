@@ -4,7 +4,7 @@ import resendEmail from "@/authentication/action/authAction/resend-email";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { BeatLoader } from "react-spinners";
 
 const COUNTDOWN_DURATION = 120; // Countdown duration in seconds
@@ -69,7 +69,8 @@ export default function EmailSentPage() {
   };
 
   return (
-    <div className="flex items-center justify-center rounded-lg bg-blue-50">
+  <Suspense>
+      <div className="flex items-center justify-center rounded-lg bg-blue-50">
       <div className="w-full max-w-lg rounded-xl bg-white p-8 shadow-xl">
         <h1 className="mb-4 text-center text-3xl font-semibold text-blue-600">
           Verify Your Email
@@ -125,5 +126,6 @@ export default function EmailSentPage() {
         </div>
       </div>
     </div>
+  </Suspense>
   );
 }
