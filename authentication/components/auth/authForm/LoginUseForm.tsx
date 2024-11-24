@@ -19,11 +19,14 @@ import {
 } from "@/components/ui/form";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
+import { Eye, EyeSlash } from "phosphor-react";
 
 export default function LoginUseForm() {
   const [isPending, startTransition] = useTransition();
   const [error, setError] = useState<string | undefined>();
   const [success, setSuccess] = useState<string | undefined>();
+  const [showPassword, setShowPassword] = useState(false);
+
 
   const form = useForm<LoginSchemaForm>({
     defaultValues: {
@@ -90,12 +93,25 @@ export default function LoginUseForm() {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Password</FormLabel>
-                <FormControl>
-                  <Input
-                    {...field}
-                    placeholder="Your Password"
-                    type="password"
-                  />
+            <FormControl>
+                  <div className="relative">
+                    <Input
+                      {...field}
+                      placeholder="Your Password"
+                      type={showPassword ? "text" : "password"}
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword((prev) => !prev)}
+                      className="absolute inset-y-0 right-0 flex items-center pr-3"
+                    >
+                      {showPassword ? (
+                        <EyeSlash size={15} />
+                      ) : (
+                        <Eye size={16} />
+                      )}
+                    </button>
+                  </div>
                 </FormControl>
                 <FormMessage />
               </FormItem>

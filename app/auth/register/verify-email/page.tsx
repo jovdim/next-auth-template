@@ -1,7 +1,10 @@
-import React from 'react'
+import EmailResend from "@/authentication/components/auth/authForm/EmailResend";
+import { Suspense } from "react";
 
 export default function page() {
   return (
-    <div>cool</div>
-  )
+    <Suspense>
+      <EmailResend />
+    </Suspense>
+  );
 }
