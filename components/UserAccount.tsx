@@ -14,6 +14,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import Logout from "@/authentication/action/authAction/logout";
 import { userData } from "@/authentication/lib/types";
+import UpdatePasswordUseForm from "@/authentication/components/auth/authForm/UpdatePasswordUseForm";
+
 
 export function UserAccount({ data }: { data: userData }) {
   const image = "/profile-placeholder.svg"; //default images
@@ -85,29 +87,6 @@ export function UserAccount({ data }: { data: userData }) {
           <TabsContent value="security" className="space-y-4">
             <Card>
               <CardHeader>
-                <CardTitle>Email</CardTitle>
-                <CardDescription>
-                  Make changes to your account here. Click save when you&apos;re
-                  done.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-2">
-                <div className="space-y-1">
-                  <Label htmlFor="email">Email</Label>
-                  <Input
-                    id="email"
-                    name="name"
-                    type="email"
-                    defaultValue={data.email}
-                  />
-                </div>
-              </CardContent>
-              <CardFooter>
-                <Button>Save changes</Button>
-              </CardFooter>
-            </Card>
-            <Card>
-              <CardHeader>
                 <CardTitle>Password</CardTitle>
                 <CardDescription>
                   Change your password here. After saving, you&apos;ll be logged
@@ -115,22 +94,9 @@ export function UserAccount({ data }: { data: userData }) {
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-2">
-                <div className="space-y-1">
-                  <Label htmlFor="current">Current password</Label>
-                  <Input id="current" type="password" />
-                </div>
-                <div className="space-y-1">
-                  <Label htmlFor="new">New password</Label>
-                  <Input id="new" type="password" />
-                </div>
-                <div className="space-y-1">
-                  <Label htmlFor="confirmpassword">confirm password</Label>
-                  <Input id="confirmpassword" type="password" />
-                </div>
+                <UpdatePasswordUseForm />
               </CardContent>
-              <CardFooter>
-                <Button>Save password</Button>
-              </CardFooter>
+             
             </Card>
           </TabsContent>
         </Tabs>
