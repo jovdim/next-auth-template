@@ -16,17 +16,19 @@ import Logout from "@/authentication/action/authAction/logout";
 import { userData } from "@/authentication/lib/types";
 
 export function UserAccount({ data }: { data: userData }) {
-  const image = "https://github.com/shadcn.png"; //default images
+  const image = "/profile-placeholder.svg"; //default images
   return (
     <Dialog>
       <DialogTrigger>
         <Avatar>
           <AvatarImage
             className="size-16 rounded-full border-4"
-            src={data.image}
+            src={data.image === "null" ? image : data.image}
             alt="profile icon"
           />
-          <AvatarFallback>Profile Icon</AvatarFallback>
+          <AvatarFallback>
+            <img src={image} alt="sss" className="size-12" />
+          </AvatarFallback>
         </Avatar>
       </DialogTrigger>
       <DialogContent className="pt-8">
@@ -39,21 +41,17 @@ export function UserAccount({ data }: { data: userData }) {
             <Card>
               <CardHeader className="flex items-center justify-center"></CardHeader>
               <CardContent className="space-y-6">
-                <div className="flex items-center gap-x-2 text-xs font-bold">
+                <div className="flex items-center justify-center">
                   <Avatar>
                     <AvatarImage
                       className="size-24 rounded-full"
-                      src={data.image || image}
+                      src={data.image === "null" ? image : data.image}
                       alt="profile icon"
                     />
-                    <AvatarFallback>Profile Icon</AvatarFallback>
+                    <AvatarFallback>
+                      <img src="image" alt="sss" className="size-12" />
+                    </AvatarFallback>
                   </Avatar>
-                  <Button className="bg-[#1789EE] font-bold text-white hover:bg-[#178aeece]">
-                    Change picture
-                  </Button>
-                  <Button className="border border-black/30 bg-white font-bold text-[#B00D0C] shadow-sm hover:bg-[#B00D0C] hover:text-white">
-                    Delete picture
-                  </Button>
                 </div>
                 <div className="space-y-6 text-lg">
                   <div className="rounded-md border-b-2 border-b-black/30 pb-2 pl-4">
