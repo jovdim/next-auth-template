@@ -11,12 +11,12 @@ export default function NavigationBar() {
   return (
     <nav className="absolute right-4 top-4 flex items-center gap-x-4">
       <LoginButton>
-        <Button variant="secondary" size="lg">
+        <Button  variant={"secondary"} size="lg">
           Login
         </Button>
       </LoginButton>
       <RegisterButton>
-        <Button variant="secondary" size="lg">
+        <Button  variant={"secondary"} size="lg">
           Signup
         </Button>
       </RegisterButton>

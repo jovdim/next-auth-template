@@ -29,11 +29,11 @@ export function UserAccount({ data }: { data: userData }) {
           />
           <AvatarFallback>
             <Image
-              width={12}
-              height={12}
+              width={16}
+              height={16}
               src={image}
               alt="profile icon"
-              className="size-12"
+              className="size-16 rounded-full border-4"
             />
           </AvatarFallback>
         </Avatar>
@@ -57,11 +57,11 @@ export function UserAccount({ data }: { data: userData }) {
                     />
                     <AvatarFallback>
                       <Image
-                        width={12}
-                        height={12}
+                        width={16}
+                        height={16}
                         src={image}
                         alt="profile icon"
-                        className="size-12"
+                        className="size-16 rounded-full border-4"
                       />
                     </AvatarFallback>
                   </Avatar>

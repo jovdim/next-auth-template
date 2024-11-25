@@ -19,7 +19,7 @@ export function RegisterButton({ children }: { children: React.ReactNode }) {
 
 export function GithubSource({ children }: { children: React.ReactNode }) {
   return (
-    <Link href="https://github.com/jovdim/next-auth-template">
+    <Link href="https://github.com/jovdim/next-auth-template" className="bg-white rounded-full">
       <span className="cursor-pointer">{children}</span>
     </Link>
   );
