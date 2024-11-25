@@ -38,7 +38,7 @@ export function UserAccount({ data }: { data: userData }) {
           </AvatarFallback>
         </Avatar>
       </DialogTrigger>
-      <DialogContent className="pt-8">
+      <DialogContent className="overflow-scroll pt-8">
         <Tabs defaultValue="profile">
           <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="profile">Profile</TabsTrigger>
@@ -69,18 +69,18 @@ export function UserAccount({ data }: { data: userData }) {
                     Profile
                   </Label>
                 </div>
-                <div className="space-y-6 text-lg">
+                <div className="max-w-full space-y-6 overflow-scroll">
                   <div className="rounded-md border-b-2 border-b-black/30 pb-2 pl-4">
                     <span>
                       <strong>Name:</strong>
                     </span>
-                    <p>{data.name}</p>
+                    <p className="w-[10px]">{data.name}</p>
                   </div>
-                  <div className="rounded-md border-b-2 border-b-black/30 pb-2 pl-4">
+                  <div className="w-full overflow-scroll rounded-md border-b-2 border-b-black/30 pb-2 pl-4">
                     <span>
                       <strong>email:</strong>
                     </span>
-                    <p>{data.email}</p>
+                    <p className="w-[10px]">{data.email}</p>
                   </div>
                 </div>
               </CardContent>
