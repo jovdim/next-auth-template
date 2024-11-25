@@ -40,6 +40,7 @@ export async function loginUser(data: LoginSchemaForm) {
   const hasExpired = existingToken
     ? new Date(existingToken.expiresAt) < new Date()
     : "";
+
   if (
     !existingUser?.credentialEmailVerified &&
     existingUser?.password &&

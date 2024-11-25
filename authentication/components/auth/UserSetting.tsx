@@ -1,23 +1,19 @@
 import { auth } from "@/auth";
 import { userData } from "@/authentication/lib/types";
 import { UserAccount } from "@/components/UserAccount";
+import { redirect } from "next/navigation";
 
 export default async function UserSetting() {
   const session = await auth();
-  // If no session or user is found, return early
-  if (!session || !session.user) return <div>not found</div>;
+  if (!session) {
+    return redirect("/404");
+  }
 
-  const { name, email, image } = session.user;
+  const data: userData = {
+    name: session.user?.name || "",
+    email: session.user?.email || "",
+    image: session.user?.image || "",
+  };
 
-  // If any of the user fields are missing, return early
-  if (!name || !email) return <div>not found2</div>;
-
-  // Create a typed data object
-  const data: userData = { name, email, image: image || undefined };
-
-  return (
-  
-      <UserAccount data={data} />
- 
-  );
+  return <UserAccount data={data} />;
 }

@@ -1,4 +1,3 @@
-
 //CardWrapper.tsx
 export interface CardWrapperProps {
   children: React.ReactNode;
@@ -22,5 +21,9 @@ export interface BackButtonProps {
 export interface userData {
   name: string;
   email: string;
-  image?: string;
+  image: string;
 }
+
+export type userDataWithUserId = userData & {
+  id: string;
+};
