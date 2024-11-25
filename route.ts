@@ -33,5 +33,5 @@ export const API_PREFIX_AUTHENTICATIONI = "/api/auth";
  * @type {string}
  */
 
-export const DEFAULT_LOGIN_REDIRECT = "/settings";
+export const DEFAULT_LOGIN_REDIRECT = "/dashboard";
 export const ADMIN_ROUTES = ["/admin"];
