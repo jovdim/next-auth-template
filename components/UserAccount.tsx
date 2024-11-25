@@ -80,7 +80,7 @@ export function UserAccount({ data }: { data: userData }) {
                     <span>
                       <strong>email:</strong>
                     </span>
-                    <p className="w-[10px]">{data.email}</p>
+                    <p>{data.email}</p>
                   </div>
                 </div>
               </CardContent>
