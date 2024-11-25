@@ -11,6 +11,7 @@ import delayRandom from "@/authentication/lib/delay-random";
 import { generateVerificationToken } from "@/authentication/lib/generate-token";
 import { sendVerificationEmail } from "@/authentication/lib/mail";
 import { redirect } from "next/navigation";
+import { getVerificationTokenByEmail } from "@/authentication/lib/data/verification-token";
 
 const SALT_ROUNDS = 10;
 
@@ -30,13 +31,21 @@ export async function registerUser(data: RegisterSchemaForm) {
   // Check if a user with the same email already exists
   const existingUser = await getUserByEmail(email);
 
-  if (!existingUser?.credentialEmailVerified && existingUser?.password)
+  const existingToken = await getVerificationTokenByEmail(email);
+  const hasExpired = existingToken
+    ? new Date(existingToken.expiresAt) < new Date()
+    : "";
+  if (
+    !existingUser?.credentialEmailVerified &&
+    existingUser?.password &&
+    !hasExpired
+  )
     return {
       success:
         "A confirmation email has already been sent. Please check your inbox or spam folder.",
     };
 
-  if (existingUser?.password) {
+  if (existingUser?.password && existingUser?.credentialEmailVerified) {
     return { error: "An account with this email already exists." };
   }
 
@@ -61,15 +70,7 @@ export async function registerUser(data: RegisterSchemaForm) {
 
   // Generate a verification token and send the confirmation email
   const verificationToken = await generateVerificationToken(email);
-
-  if (!existingUser?.credentialEmailVerified && existingUser?.password) {
-    return {
-      success: "A confirmation email has already been sent!",
-    };
-  }
   await sendVerificationEmail(verificationToken.email, verificationToken.token);
+
   redirect(`/auth/register/verify-email?email=${encodeURIComponent(email)}`);
-  return {
-    success: "A confirmation email has been sent. Please verify your email.",
-  };
 }
