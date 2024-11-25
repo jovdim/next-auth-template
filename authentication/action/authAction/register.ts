@@ -59,9 +59,10 @@ export async function registerUser(data: RegisterSchemaForm) {
       email: existingUser?.email ?? "", // condition to chec  k if the user already exists
     },
     create: {
+      image: "/profile-placeholder.svg", //change to the real default external image link
       name,
       email,
-      password: hashedPassword, // fields to create if the user does not exist
+      password: hashedPassword,
     },
     update: {
       password: hashedPassword, // fields to update if the user exists

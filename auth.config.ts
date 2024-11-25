@@ -11,7 +11,6 @@ declare module "next-auth" {
   }
   interface Session {
     user: {
-      id: string;
       userRole: "USER" | "ADMIN";
     } & DefaultSession["user"];
   }
@@ -59,9 +58,31 @@ export default {
             existingUser = await db.user.create({
               data: {
                 email: profile.email,
-                name: user.name || profile.name,
-                image: user.image || profile.picture || profile.avatar_link,
+                name: user.name || profile.name || "no-name",
+                image:
+                  user.image ||
+                  profile.picture ||
+                  profile.avatar_link ||
+                  "/profile-placeholder.svg", //change with a real external default image link for you app
                 role: "USER",
+                emailVerified: new Date(),
+              },
+            });
+          }
+          //check if the email is verified if not verfied it.
+          if (existingUser && !existingUser.emailVerified) {
+            existingUser = await db.user.update({
+              where: {
+                email: profile.email,
+              },
+              data: {
+                email: profile.email,
+                name: user.name || profile.name || "no-name",
+                image:
+                  user.image ||
+                  profile.picture ||
+                  profile.avatar_link ||
+                  "/profile-placeholder.svg", //Replace to real image link
                 emailVerified: new Date(),
               },
             });

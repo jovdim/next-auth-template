@@ -69,14 +69,14 @@ export function UserAccount({ data }: { data: userData }) {
                     Profile
                   </Label>
                 </div>
-                <div className="max-w-full space-y-6 overflow-scroll">
+                <div className="max-w-full space-y-6 ">
                   <div className="rounded-md border-b-2 border-b-black/30 pb-2 pl-4">
                     <span>
                       <strong>Name:</strong>
                     </span>
-                    <p className="w-[10px]">{data.name}</p>
+                    <p>{data.name}</p>
                   </div>
-                  <div className="w-full overflow-scroll rounded-md border-b-2 border-b-black/30 pb-2 pl-4">
+                  <div className="w-full  rounded-md border-b-2 border-b-black/30 pb-2 pl-4">
                     <span>
                       <strong>email:</strong>
                     </span>

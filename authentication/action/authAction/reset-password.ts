@@ -26,7 +26,13 @@ export async function resetPassword(data: ResetSchemaForm) {
   const { email } = validatedData;
 
   const existingUser = await getUserByEmail(email);
+
   if (!existingUser) {
+    console.warn(`Attempt to reset non-existent email: ${email}`);
+    return { error: "Email not found." };
+  }
+
+  if (existingUser && !existingUser?.credentialEmailVerified) {
     console.warn(`Attempt to reset non-existent email: ${email}`);
     return { error: "Email not found." };
   }
