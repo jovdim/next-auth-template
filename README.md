@@ -27,7 +27,7 @@ This project provides a fully functional, customizable authentication system for
 - Validation on all forms for a secure user experience.
 
 ---
-## Images:
+<!--## Images:
 <div><img src="https://github.com/user-attachments/assets/f78bc5cb-5264-4dce-9f11-6b7f36b78720" alt="image 1" width="300" >
 <img src="https://github.com/user-attachments/assets/f8464505-ea85-4f9c-a8c2-40aa2207e741" alt="image 2" width="300"><img src="https://github.com/user-attachments/assets/9c50d568-6591-4427-ae26-50c5478ad33f" alt="image 3" width="400">
 <img src="https://github.com/user-attachments/assets/30aa77a8-5da0-4d92-a085-02df3ef7faa2" alt="image 4" width="160">
@@ -37,7 +37,7 @@ This project provides a fully functional, customizable authentication system for
 <img src="https://github.com/user-attachments/assets/7d8f70f3-33d0-49ed-b6d9-05f031d2f090" alt="image 8" width="200" >
 <img src="https://github.com/user-attachments/assets/40bb1aab-a9f8-4a13-a607-7d53e8711130" alt="image 6" width="200">
 
-
+-->
 ## Technologies Used 🛠️
 
 - **Languages**: JavaScript, TypeScript
